@@ -1,0 +1,30 @@
+name: Daily Run find_v2ray_proxy Script
+
+on:
+  schedule:
+    # 每天的UTC时间00:00运行一次
+    - cron: '0 0 * * *'
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # 你需要的Python版本
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+        pip install bs4
+        pip install re
+
+    - name: Run find_v2ray_proxy script
+      run: python find_v2ray_proxy.py
