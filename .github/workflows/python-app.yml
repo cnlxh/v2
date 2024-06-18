@@ -24,7 +24,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests
         pip install bs4
-        pip install re
 
     - name: Run find_v2ray_proxy script
       run: python find_v2ray_proxy.py
